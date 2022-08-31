@@ -6,6 +6,8 @@ index = 0
 
 CadastrarProduto()
 BuscarPeloId()
+BuscarPeloNome()
+
 
 function CadastrarProduto(){
     idProdutoArray[index] = prompt("Qual o id do produto?")
@@ -28,3 +30,14 @@ function BuscarPeloId(idParametro){
     }
 }
 
+function BuscarPeloNome(){
+    nomeProduto = prompt("Qual o nome do produto que você busca?")
+    for(index = 0; index < NomeProdutoArray.length; index++){
+        if(nomeProduto == NomeProdutoArray[index]){
+            console.log("id: " +idProdutoArray[index])
+            return
+        }else{
+            console.log("Produto não encontrado.")
+        }
+    }
+}
