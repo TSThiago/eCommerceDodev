@@ -22,7 +22,7 @@ ExibirPeloPreco()
 function CadastrarProduto() {
     idProdutoArray[index] = prompt("Qual o id do produto?")
     NomeProdutoArray[index] = prompt("Qual o nome do produto?")
-    PrecoProdutoArray[index] = prompt("Qual o preço do produto?")
+    PrecoProdutoArray[index] = parseInt(prompt("Qual o preço do produto?"))
     AvaliacaoProdutoArray[index] = prompt("Qual a avaliação do produto?")
     console.log(idProdutoArray[index] + " - " + NomeProdutoArray[index] + " - " + PrecoProdutoArray[index] + " - " + AvaliacaoProdutoArray[index])
     index++
@@ -79,10 +79,11 @@ function ExibirPeloId() {
     }
 }
 
-function ExibirPeloPreco(){
-    for (contador = 0; contador < PrecoProdutoArray.length; contador++) {
-        for (index = PrecoProdutoArray.length; index > 1; index--) {
-            if (PrecoProdutoArray[index] > PrecoProdutoArray[index - 1]) {
+function ExibirPeloPreco() {
+    console.log("Exibindo pelo preço:")
+    for(contador = 0; contador < PrecoProdutoArray.length + 1; contador++){
+        for(index = PrecoProdutoArray.length; index > 0; index--){
+            if(PrecoProdutoArray[index] > PrecoProdutoArray[index - 1]){
                 idAux = idProdutoArray[index]
                 nomeAux = NomeProdutoArray[index]
                 precoAux = PrecoProdutoArray[index]
@@ -93,7 +94,7 @@ function ExibirPeloPreco(){
                 PrecoProdutoArray[index] = PrecoProdutoArray[index - 1]
                 AvaliacaoProdutoArray[index] = AvaliacaoProdutoArray[index - 1]
 
-                idProdutoArray[index - 1] = idAux
+                idProdutoArray[index -1] = idAux
                 NomeProdutoArray[index - 1] = nomeAux
                 PrecoProdutoArray[index - 1] = precoAux
                 AvaliacaoProdutoArray[index - 1] = avaliacaoAux
@@ -101,7 +102,7 @@ function ExibirPeloPreco(){
         }
         index = PrecoProdutoArray.length
     }
-    for (index = 0; index < PrecoProdutoArray.length; index++) {
+    for (index = 0; index < idProdutoArray.length; index++) {
         console.log(idProdutoArray[index] + " - " + NomeProdutoArray[index] + " - " + PrecoProdutoArray[index] + " - " + AvaliacaoProdutoArray[index])
     }
 }
