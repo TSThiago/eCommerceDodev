@@ -16,11 +16,8 @@ avaliacaoAux = 0
 index = 0
 continuar = 1
 
-while (continuar == 1) {
-    CadastrarProduto()
-    continuar = prompt("Aperte 1 para continuar \nAperte 2 para parar")
-}
-DeletarProduto()
+RodarPrograma()
+console.log("Programa encerrado.")
 
 function CadastrarProduto() {
     idProdutoArray[index] = parseInt(prompt("Qual o id do produto?"))
@@ -31,7 +28,7 @@ function CadastrarProduto() {
     index++
 }
 
-function BuscarPeloId(idParametro) {
+function BuscarPeloId() {
     idProduto = prompt("Qual o id do produto que você busca?")
     for (index = 0; index < idProdutoArray.length; index++) {
         if (idProduto == idProdutoArray[index]) {
@@ -175,4 +172,37 @@ function Ordenar() {
 
 function MostrarProdutos() {
     console.log(idProdutoArray[index] + " - " + NomeProdutoArray[index] + " - R$" + PrecoProdutoArray[index] + " - " + AvaliacaoProdutoArray[index])
+}
+
+function RodarPrograma(){
+    while(continuar != 9){
+        opcao = prompt("O que deseja fazer? \n1 - Cadastrar Produto \n2 - Buscar Produto pelo Id \n3 - Buscar Produto pelo Nome \n4 - Listar Produtos pela Avaliação \n5 - Listar Produtos pelo Preço \n6 - Listar Produtos pela Avaliação\n7 - Atualizar preço \n8 - Deletar Produto\n9 - Encerrar Programa")
+        if(opcao == 1){
+            CadastrarProduto()
+        }
+        if(opcao == 2){
+            BuscarPeloId()
+        }
+        if(opcao == 3){
+            BuscarPeloNome()
+        }
+        if(opcao == 4){
+            ExibirPeloId()
+        }
+        if(opcao == 5){
+            ExibirPeloPreco()
+        }
+        if(opcao == 6){
+            ExibirPelaAvaliacao()
+        }
+        if(opcao == 7){
+            AtualizarPreco()
+        }
+        if(opcao == 8){
+            DeletarProduto()
+        }
+        if(opcao == 9){
+            continuar = 9
+        }
+    }
 }
