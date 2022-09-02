@@ -13,10 +13,8 @@ continuar = 1
 
 while (continuar == 1) {
     CadastrarProduto()
-    continuar = prompt("Aperte 2 para parar")
+    continuar = prompt("Aperte 1 para continuar \nAperte 2 para parar")
 }
-BuscarPeloId()
-BuscarPeloNome()
 ExibirPelaAvaliacao()
 
 function CadastrarProduto() {
@@ -111,8 +109,8 @@ function ExibirPeloPreco() {
 function ExibirPelaAvaliacao(){
     console.log("Ordenando pela avaliação:")
     for(contador = 0; contador < AvaliacaoProdutoArray.length; contador++){
-        for(index = 0; index < AvaliacaoProdutoArray.length; index++){
-            if(AvaliacaoProdutoArray[index] < PrecoProdutoArray[index + 1]){
+        for(index = 0; index < AvaliacaoProdutoArray.length - 1; index++){
+            if(AvaliacaoProdutoArray[index] < AvaliacaoProdutoArray[index + 1]){
                 idAux = idProdutoArray[index]
                 nomeAux = NomeProdutoArray[index]
                 precoAux = PrecoProdutoArray[index]
@@ -134,21 +132,4 @@ function ExibirPelaAvaliacao(){
     for (index = 0; index < AvaliacaoProdutoArray.length; index++) {
         console.log(idProdutoArray[index] + " - " + NomeProdutoArray[index] + " - " + PrecoProdutoArray[index] + " - " + AvaliacaoProdutoArray[index])
     }
-}
-
-function Ordenar(){
-    idAux = idProdutoArray[index]
-    nomeAux = NomeProdutoArray[index]
-    precoAux = PrecoProdutoArray[index]
-    avaliacaoAux = AvaliacaoProdutoArray[index]
-
-    idProdutoArray[index] = idProdutoArray[index + 1]
-    NomeProdutoArray[index] = NomeProdutoArray[index + 1]
-    PrecoProdutoArray[index] = PrecoProdutoArray[index + 1]
-    AvaliacaoProdutoArray[index] = AvaliacaoProdutoArray[index + 1]
-
-    idProdutoArray[index + 1] = idAux
-    NomeProdutoArray[index + 1] = nomeAux
-    PrecoProdutoArray[index + 1] = precoAux
-    AvaliacaoProdutoArray[index + 1] = avaliacaoAux
 }
