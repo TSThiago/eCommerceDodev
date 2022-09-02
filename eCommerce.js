@@ -3,6 +3,11 @@ NomeProdutoArray = []
 PrecoProdutoArray = []
 AvaliacaoProdutoArray = []
 
+idSup = []
+nomeSup = []
+precoSup = []
+avaliacaosup = []
+
 idAux = 0
 nomeAux = 0
 precoAux = 0
@@ -15,7 +20,7 @@ while (continuar == 1) {
     CadastrarProduto()
     continuar = prompt("Aperte 1 para continuar \nAperte 2 para parar")
 }
-AtualizarPreco()
+DeletarProduto()
 
 function CadastrarProduto() {
     idProdutoArray[index] = parseInt(prompt("Qual o id do produto?"))
@@ -95,15 +100,60 @@ function ExibirPelaAvaliacao() {
     }
 }
 
-function AtualizarPreco(){
+function AtualizarPreco() {
     idProduto = prompt("Qual o id do produto?")
-    for(index = 0; index < idProdutoArray.length; index++){
-        if(idProduto == idProdutoArray[index]){
-            console.log("Produto " +NomeProdutoArray[index]+ ":")
+    for (index = 0; index < idProdutoArray.length; index++) {
+        if (idProduto == idProdutoArray[index]) {
+            console.log("Produto " + NomeProdutoArray[index] + ":")
             PrecoProdutoArray[index] = parseFloat(prompt("Insira o novo preço do produto"))
             MostrarProdutos()
         }
     }
+}
+
+function DeletarProduto() {
+    erro = true
+    idProduto = prompt("Insira o id do produto para deleta-lo")
+    for (index = 0; index < idProdutoArray.length; index++) {
+        if (idProdutoArray[index] == idProduto) {
+            console.log("Produto " + idProdutoArray[index] + " - " + NomeProdutoArray[index]+ " deletado com sucesso.")
+            idProdutoArray[index] = 0
+            NomeProdutoArray[index] = 0
+            PrecoProdutoArray[index] = 0
+            AvaliacaoProdutoArray[index] = 0
+            erro = false
+            if (erro == false) {
+                for (contador = 0; contador < idProdutoArray.length; contador++) {
+                    for (index = 0; index < idProdutoArray.length - 1; index++) {
+                        if (idProdutoArray[index] == 0) {
+                            Ordenar()
+                        }
+                    }
+                    index = 0
+                }
+                for (index = 0; index < idProdutoArray.length; index++) {
+                    if (idProdutoArray[index] != 0) {
+                        idSup[index] = idProdutoArray[index]
+                        nomeSup[index] = NomeProdutoArray[index]
+                        precoSup[index] = PrecoProdutoArray[index]
+                        avaliacaosup[index] = AvaliacaoProdutoArray[index]
+                    }
+                }
+                idProdutoArray = idSup
+                NomeProdutoArray = nomeSup
+                PrecoProdutoArray = precoSup
+                AvaliacaoProdutoArray = avaliacaosup
+
+                idSup = []
+                nomeSup = []
+                precoSup = []
+                avaliacaosup = []
+            }
+        }else if(erro){
+            console.log("Produto não identificado.")
+        }
+    }
+
 }
 
 function Ordenar() {
@@ -123,6 +173,6 @@ function Ordenar() {
     AvaliacaoProdutoArray[index + 1] = avaliacaoAux
 }
 
-function MostrarProdutos(){
+function MostrarProdutos() {
     console.log(idProdutoArray[index] + " - " + NomeProdutoArray[index] + " - R$" + PrecoProdutoArray[index] + " - " + AvaliacaoProdutoArray[index])
 }
